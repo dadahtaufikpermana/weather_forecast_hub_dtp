@@ -11,8 +11,7 @@ class WeatherList extends StatelessWidget {
       itemCount: 12,
       itemBuilder: (context, index) {
         return ItemWeather(
-          iconUrl:
-          'assets/icons/weather_logo.png',
+          iconUrl: 'assets/icons/weather_logo.png',
         );
       },
     );

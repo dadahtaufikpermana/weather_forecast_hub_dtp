@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           title: 'Weather Forecast Hub',
           theme: ThemeData.light(),
           navigatorKey: navigatorKey,
-          initialRoute: Routes.homeScreen,
+          initialRoute: Routes.splashScreen,
           routes: routesApp,
           debugShowCheckedModeBanner: false,
         );
