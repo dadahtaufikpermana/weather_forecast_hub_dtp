@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return Consumer<PreferenceSettingsProvider>(
       builder: (context, preferenceSettingsProvider, _) {
         return MaterialApp(
-          title: 'SIMS PPOB',
+          title: 'Weather Forecast Hub',
           theme: ThemeData.light(),
           navigatorKey: navigatorKey,
           initialRoute: Routes.welcomeScreen,
