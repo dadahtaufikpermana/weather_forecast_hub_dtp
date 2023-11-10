@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast_hub_dtp/extensions/context_extensions.dart';
 
-import '../utils/provider/prefference_setting_provider.dart';
+import '../utils/provider/weather_provider.dart';
 import '../utils/style.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PreferenceSettingsProvider>(
+    return Consumer<WeatherProvider>(
       builder: (context, preferenceSettingsProvider, _) {
         return ElevatedButton(
           onPressed: onPress,

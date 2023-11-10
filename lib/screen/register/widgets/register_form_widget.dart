@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/access_form_field.dart';
-import '../../../utils/provider/prefference_setting_provider.dart';
+import '../../../utils/provider/weather_provider.dart';
 import '../../../widget/form_label_field_widget.dart';
 
 class RegisterFormWidget extends StatefulWidget {
@@ -28,7 +28,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PreferenceSettingsProvider>(
+    return Consumer<WeatherProvider>(
       builder: (context, preferenceSettingsProvider, _) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,

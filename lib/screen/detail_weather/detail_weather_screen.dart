@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forecast_hub_dtp/screen/detail_weather/weather_detail_content.dart';
+import '../../data/model/weather_forecast.dart';
+import 'weather_detail_content.dart';
 
 class WeatherDetailsScreen extends StatelessWidget {
-  const WeatherDetailsScreen({super.key});
+  final WeatherData weatherData;
+
+  const WeatherDetailsScreen({Key? key, required this.weatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class WeatherDetailsScreen extends StatelessWidget {
         body: SizedBox(
           width: size.width,
           height: size.height,
-          child: WeatherDetailContent(),
+          child: WeatherDetailContent(weatherData: weatherData),
         ),
       ),
     );

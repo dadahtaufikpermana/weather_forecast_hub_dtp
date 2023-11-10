@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../../data/model/weather_forecast.dart';
 
 class WeatherDetailContent extends StatelessWidget {
+  final WeatherData weatherData;
+
+  const WeatherDetailContent({Key? key, required this.weatherData})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,13 +21,13 @@ class WeatherDetailContent extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Text(
-              'Thursday, November 9, 2023',
+              DateFormat('EEEE, MMMM d, y').format(weatherData.dateTime),
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(height: 8),
           Text(
-            '12:30 PM',
+            DateFormat('h:mm a').format(weatherData.dateTime),
             style: TextStyle(fontSize: 16),
           ),
           Padding(
@@ -28,12 +36,13 @@ class WeatherDetailContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '25°C',
+                  '${(weatherData.temperature - 273.15).toStringAsFixed(2)}°C',
                   style: TextStyle(fontSize: 46, fontWeight: FontWeight.bold),
                 ),
+
                 SizedBox(width: 8),
-                Image.asset(
-                  'assets/icons/weather_logo.png',
+                Image.network(
+                  'https://openweathermap.org/img/wn/${weatherData.weatherIcon}@2x.png',
                   width: 60,
                   height: 60,
                 ),
@@ -43,7 +52,7 @@ class WeatherDetailContent extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 36),
             child: Text(
-              'Clouds (few clouds)',
+              '${weatherData.weatherMain} (${weatherData.weatherDescription})',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
@@ -56,11 +65,7 @@ class WeatherDetailContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Temp (Min)',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      '20°C',
+                      '${(weatherData.tempMin- 273.15).toStringAsFixed(2)}°C',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
@@ -70,11 +75,7 @@ class WeatherDetailContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Temp (Max)',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    Text(
-                      '30°C',
+                      '${(weatherData.tempMax- 273.15).toStringAsFixed(2)}°C',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
