@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:weather_forecast_hub_dtp/extensions/context_extensions.dart';
+import 'package:provider/provider.dart';
 
-import '../../../utils/style.dart';
-import '../../detail_weather/detail_weather_screen.dart';
+import '../../../routes/routes.dart';
+import '../../../utils/provider/weather_provider.dart';
 
 class ItemWeather extends StatelessWidget {
-  final String iconUrl;
+  final int index;
 
-  ItemWeather({required this.iconUrl});
+  ItemWeather({required this.index});
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = context.theme;
+    ThemeData theme = Theme.of(context);
+    final weatherProvider = Provider.of<WeatherProvider>(context);
+
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        print('Item Tapped: $index');
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(builder: (context) => WeatherDetailsScreen()),
+          Routes.weatherDetailsScreen,
+          arguments: weatherProvider.getWeatherDataAtIndex(index),
         );
       },
       child: Column(
@@ -28,8 +31,8 @@ class ItemWeather extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
                 child: ClipOval(
-                  child: Image.asset(
-                    iconUrl,
+                  child: Image.network(
+                    weatherProvider.getWeatherIconCode(index),
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
@@ -41,12 +44,15 @@ class ItemWeather extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _getCurrentDateTime(),
+                    weatherProvider.getDateTime(index),
                     style: theme.textTheme.subtitle1!.copyWith(
-                        color: blackColor, fontWeight: FontWeight.bold),
+                        color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  Text('Clouds'),
-                  Text('Temp: 25°C'),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(weatherProvider.getWeatherMainAtIndex(index)),
+                  ),
+                  Text('Temp: ${weatherProvider.temperature(index)}°C'),
                 ],
               ),
             ],
@@ -57,12 +63,5 @@ class ItemWeather extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String _getCurrentDateTime() {
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('E, MMM d, y H:mm').format(now);
-
-    return formattedDate;
   }
 }

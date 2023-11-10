@@ -4,7 +4,7 @@ import 'package:weather_forecast_hub_dtp/extensions/context_extensions.dart';
 import 'package:weather_forecast_hub_dtp/screen/register/widgets/register_form_widget.dart';
 
 import '../../routes/routes.dart';
-import '../../utils/provider/prefference_setting_provider.dart';
+import '../../utils/provider/weather_provider.dart';
 import '../../utils/style.dart';
 import '../../widget/button_widget.dart';
 import '../welcome/widgets/button_signin_widget.dart';
@@ -58,7 +58,7 @@ class _RegisterContentState extends State<RegisterContent> {
   Widget build(BuildContext context) {
     ThemeData theme = context.theme;
 
-    return Consumer<PreferenceSettingsProvider>(
+    return Consumer<WeatherProvider>(
       builder: (context, preferenceSettingsProvider, _) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

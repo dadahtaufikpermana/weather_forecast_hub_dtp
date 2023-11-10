@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:weather_forecast_hub_dtp/routes/register_routes.dart';
 import 'package:weather_forecast_hub_dtp/routes/routes.dart';
 import 'package:weather_forecast_hub_dtp/utils/navigation.dart';
-import 'package:weather_forecast_hub_dtp/utils/provider/prefference_setting_provider.dart';
+import 'package:weather_forecast_hub_dtp/utils/provider/weather_provider.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => PreferenceSettingsProvider(),
+          create: (_) => WeatherProvider(),
         ),
       ],
       child: const MyApp(),
@@ -23,8 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PreferenceSettingsProvider>(
-      builder: (context, preferenceSettingsProvider, _) {
+    context.read<WeatherProvider>().initializeWeatherData();
+
+    return Consumer<WeatherProvider>(
+      builder: (context, weatherProvider, _) {
         return MaterialApp(
           title: 'Weather Forecast Hub',
           theme: ThemeData.light(),
@@ -37,3 +39,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
