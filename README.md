@@ -57,3 +57,6 @@ Use the following command to run the application on an emulator or connected dev
    ```bash
    flutter run
 
+## Testing Authentication
+You can test authentication by creating a user account or using Gmail, email and password and phone number for login. Ensure that Firebase authentication methods are correctly set up in your Firebase console.
+
