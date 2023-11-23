@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast_hub_dtp/extensions/context_extensions.dart';
 
+import '../../../data/service/auth_service.dart';  // Pastikan import AuthService
+import '../../../routes/routes.dart';
 import '../../../utils/provider/weather_provider.dart';
 import '../../../utils/style.dart';
 import '../../../widget/button_signin_widget.dart';
@@ -16,6 +18,8 @@ class ButtonSigninWith extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthService authService = context.read<AuthService>();  // Ambil AuthService dari provider
+
     return Consumer<WeatherProvider>(
       builder: (context, preferenceSettingsProvider, _) {
         return Row(
@@ -24,10 +28,9 @@ class ButtonSigninWith extends StatelessWidget {
           children: [
             Expanded(
               child: ButtonSigninWidget(
-                onPress: () => context.showCustomFlashMessage(
-                  status: 'info',
-                  positionBottom: positionButtom,
-                ),
+                onPress: () async{
+                  Navigator.pushNamed(context, Routes.phoneAuthScreen).then((_) {});
+                },
                 title: 'PHONE NUMBER',
                 icon: 'assets/icons/handphone.png',
                 buttonColor: whiteColor,
@@ -40,15 +43,32 @@ class ButtonSigninWith extends StatelessWidget {
             ),
             Expanded(
               child: ButtonSigninWidget(
-                onPress: () => context.showCustomFlashMessage(
-                  status: 'info',
-                  positionBottom: positionButtom,
-                ),
+                onPress: () async {
+                  final result = await authService.signInWithGoogle();
+                  if (result == null) {
+                    context.showCustomFlashMessage(
+                      status: 'success',
+                      title: 'Login Success!',
+                      positionBottom: false,
+                    );
+
+                    Navigator.pushNamed(context, Routes.homeScreen).then((_) {});
+                    print('Login with Google successful!');
+                  } else {
+                    print('Login with Google Error: $result');
+                    context.showCustomFlashMessage(
+                      status: 'error',
+                      title: 'Google Login Failed',
+                      message: 'Error: $result',
+                      positionBottom: positionButtom,
+                    );
+                  }
+                },
                 title: 'GOOGLE',
                 icon: 'assets/icons/google.png',
-                buttonColor:  whiteColor,
-                titleColor:blackColor,
-                shadowColor:  grayColor20,
+                buttonColor: whiteColor,
+                titleColor: blackColor,
+                shadowColor: grayColor20,
               ),
             ),
           ],

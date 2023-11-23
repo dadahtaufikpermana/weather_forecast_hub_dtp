@@ -4,14 +4,23 @@ import 'package:weather_forecast_hub_dtp/routes/register_routes.dart';
 import 'package:weather_forecast_hub_dtp/routes/routes.dart';
 import 'package:weather_forecast_hub_dtp/utils/navigation.dart';
 import 'package:weather_forecast_hub_dtp/utils/provider/weather_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import 'data/service/auth_service.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => WeatherProvider(),
         ),
+        Provider<AuthService>(create: (_) => AuthService()),
       ],
       child: const MyApp(),
     ),
@@ -39,4 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

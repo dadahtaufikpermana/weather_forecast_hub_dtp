@@ -6,6 +6,7 @@ import '../data/model/weather_forecast.dart';
 import '../screen/detail_weather/detail_weather_screen.dart';
 import '../screen/home_screen/home_screen.dart';
 import '../screen/login/login_screen.dart';
+import '../screen/phone_auth_screen/phone_auth_screen.dart';
 import '../screen/splash/splash_screen.dart';
 import '../screen/welcome/welcome_screen.dart';
 
@@ -18,4 +19,5 @@ Map<String, WidgetBuilder> routesApp = {
   Routes.weatherDetailsScreen: (context) => WeatherDetailsScreen(
     weatherData: ModalRoute.of(context)!.settings.arguments as WeatherData,
   ),
+  Routes.phoneAuthScreen: (_) => PhoneAuthScreen(),
 };

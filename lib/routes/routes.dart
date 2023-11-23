@@ -5,4 +5,5 @@ class Routes {
   static const registerScreen = "register_screen";
   static const homeScreen = "home_screen";
   static const weatherDetailsScreen = "weather_detail_screen";
+  static const phoneAuthScreen = "phone_authScreen";
 }

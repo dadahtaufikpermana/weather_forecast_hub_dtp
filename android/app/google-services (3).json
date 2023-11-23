@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "963392769235",
+    "project_id": "weather-forecast-hub-c5ab5",
+    "storage_bucket": "weather-forecast-hub-c5ab5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963392769235:android:7ed57a0b388f6b22cb5826",
+        "android_client_info": {
+          "package_name": "com.example.weather_forecast_hub_dtp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963392769235-4k5r74ud1hum8qp6gshm3l2205n7c7qe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weather_forecast_hub_dtp",
+            "certificate_hash": "372248ac96c20ca9435222c4a51bf6dea033cc6b"
+          }
+        },
+        {
+          "client_id": "963392769235-7aku88td10f2tb9k7aupl08e71jv6hg8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weather_forecast_hub_dtp",
+            "certificate_hash": "74fcd537c18f97589049e111bd3695bae734fa53"
+          }
+        },
+        {
+          "client_id": "963392769235-vppq97ag7103h68kgusuvb3l0dp58h4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAZXqqBOJP8_ENkKlX38ROs7wiSb-O3os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963392769235-vppq97ag7103h68kgusuvb3l0dp58h4g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "963392769235-08e5sm420eli1i6pg2484bhs094emlpb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.weatherForecastHubDtp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

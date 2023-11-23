@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast_hub_dtp/screen/home_screen/widget/list_item_weather.dart';
 import 'package:weather_forecast_hub_dtp/utils/provider/weather_provider.dart';
+import 'package:weather_forecast_hub_dtp/data/service/auth_service.dart';
+
+import '../../routes/routes.dart';  // Import your AuthService
 
 class HomeContent extends StatefulWidget {
   @override
@@ -9,11 +12,22 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContentState extends State<HomeContent> {
+  final AuthService _authService = AuthService();  // Create an instance of AuthService
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Weather App'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              await _authService.signOut();
+              Navigator.pushNamed(context, Routes.welcomeScreen).then((_) {});
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

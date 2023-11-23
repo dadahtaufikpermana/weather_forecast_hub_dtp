@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_forecast_hub_dtp/extensions/context_extensions.dart';
 import 'package:weather_forecast_hub_dtp/screen/register/widgets/register_form_widget.dart';
 
+import '../../data/service/auth_service.dart';
 import '../../routes/routes.dart';
 import '../../utils/provider/weather_provider.dart';
 import '../../utils/style.dart';
@@ -38,19 +39,34 @@ class _RegisterContentState extends State<RegisterContent> {
     super.dispose();
   }
 
-  void onPressSignInButton() {
+  void onPressRegisterButton() async {
+    final AuthService authService = context.read<AuthService>();
+
     if (_formState.currentState?.validate() == true) {
-      context.showCustomFlashMessage(
-        status: 'success',
-        title: 'Login Success!',
-        positionBottom: false,
+      final result = await authService.registerWithEmailAndPassword(
+        _email.text,
+        _password.text,
       );
-      // Future.delayed(const Duration(seconds: 1)).then(
-      //   (_) => Navigator.pushNamed(
-      //     context,
-      //     Routes.homeScreen,
-      //   ),
-      // );
+
+      if (result == null) {
+        _email.clear();
+        _password.clear();
+
+        context.showCustomFlashMessage(
+          status: 'success',
+          title: 'Register Success!',
+          positionBottom: false,
+        );
+
+        Navigator.pushNamed(context, Routes.loginScreen).then((_) {});
+      } else {
+        context.showCustomFlashMessage(
+          status: 'error',
+          title: 'Register Failed!',
+          message: 'Error: $result',
+          positionBottom: false,
+        );
+      }
     }
   }
 
@@ -128,7 +144,7 @@ class _RegisterContentState extends State<RegisterContent> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 42.0),
                     child: ButtonWidget(
-                      onPress: () => onPressSignInButton(),
+                      onPress: () => onPressRegisterButton(),
                       title: 'Register',
                       buttonColor: Colors.cyan,
                       titleColor: whiteColor,
