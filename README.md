@@ -37,3 +37,24 @@ This project relies on the following dependencies:
 
    ```bash
    git clone https://github.com/your-username/weather-forecast-hub-dtp.git
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd weather-forecast-hub-dtp
+
+
+3. **Create a Firebase project and configure your app by following the steps in the Firebase [Firebase Documentation]([https://pub.dev/packages/inspection](https://firebase.google.com/docs/flutter/setup?hl=id&platform=android)).**
+
+
+4. **Add your Firebase configuration files: For Android: Place google-services.json in the android/app directory.**
+
+5. **Obtain an API key from [OpenWeatherMap]([[https://pub.dev/packages/inspection](https://openweathermap.org/)]) and replace YOUR_OPENWEATHERMAP_API_KEY in lib/data/api/app_url/api_key.dart with your key.**
+
+6. **Running the App:**
+Use the following command to run the application on an emulator or connected device:
+
+   ```bash
+   flutter run
+
+
