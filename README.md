@@ -1,43 +1,39 @@
+# Weather Forecast Hub DTP
 
-README.md for Weather Forecast Hub DTP - GitHub Project
-
-Weather Forecast Hub DTP
 Welcome to the Weather Forecast Hub DTP repository! This Flutter application provides accurate weather forecasts based on user locations. Below are instructions to guide you through running and testing the application.
 
-Prerequisites
+## Prerequisites
+
 Make sure you have the following installed on your development machine:
 
-Flutter SDK
-Dart SDK
-Firebase Account (for authentication)
-API Key from OpenWeatherMap
-Getting Started
-1. Clone the repository:
-git clone https://github.com/your-username/weather-forecast-hub-dtp.git
+- Flutter SDK
+- Dart SDK
+- Firebase Account (for authentication)
+- API Key from [OpenWeatherMap](https://openweathermap.org/)
 
-2.Navigate to the project directory:
-cd weather-forecast-hub-dtp
+## Dependencies
 
-3.Install dependencies:
-flutter pub get
+This project relies on the following dependencies:
 
-4.Create a Firebase project and configure your app by following the steps in the Firebase documentation.
+- [Provider](https://pub.dev/packages/provider): A library for state management.
+- [Flash](https://pub.dev/packages/flash): A library for displaying custom flash messages.
+- [SharedPreferences](https://pub.dev/packages/shared_preferences): A library for reading and writing simple key-value pairs.
+- [Hexcolor](https://pub.dev/packages/hexcolor): A library for converting color hex strings to Flutter Color objects.
+- [Intl](https://pub.dev/packages/intl): A library for internationalization and localization.
+- [Http](https://pub.dev/packages/http): A library for making HTTP requests.
+- [Geolocator](https://pub.dev/packages/geolocator): A library for getting device location.
+- [Geocoding](https://pub.dev/packages/geocoding): A library for converting between geographic coordinates and addresses.
+- [Firebase Auth](https://pub.dev/packages/firebase_auth): A library for Firebase authentication.
+- [Firebase Core](https://pub.dev/packages/firebase_core): A library for Firebase initialization.
+- [Cloud Firestore](https://pub.dev/packages/cloud_firestore): A library for Cloud Firestore integration.
+- [Build Runner](https://pub.dev/packages/build_runner): A library for running code generation tasks.
+- [Google Sign In](https://pub.dev/packages/google_sign_in): A library for Google Sign In integration.
+- [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons): A library for setting custom app icons.
+- [Inspection](https://pub.dev/packages/inspection): A custom library for inspection (include its Git link).
 
-Add your Firebase configuration files:
+## Getting Started
 
-For Android: Place google-services.json in the android/app directory.
-Obtain an API key from OpenWeatherMap and replace YOUR_OPENWEATHERMAP_API_KEY in lib/data/api/app_url/api_key.dart with your key.
+1. **Clone the repository:**
 
-Running the App
-Use the following command to run the application on an emulator or connected device:
-flutter run
-
-Testing Authentication
-You can test authentication by creating a user account or using Gmail/phone number for login. Ensure that Firebase authentication methods are correctly set up in your Firebase console.
-
-Issues and Contributions
-Feel free to submit issues or contribute to the project! Your feedback and contributions are highly appreciated.
-
-
-
-
+   ```bash
+   git clone https://github.com/your-username/weather-forecast-hub-dtp.git
